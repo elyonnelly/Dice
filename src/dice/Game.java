@@ -51,18 +51,6 @@ public class Game {
     }
 
     /**
-     * checking that some player has already reached the required number of victories.
-     * @return
-     */
-    public boolean isGameOver() {
-        for (int i = 0; i < numberOfPlayers; i++) {
-            if (players[i].getNumberOfVictories() == numberOfRequiredVictories)
-                return true;
-        }
-        return false;
-    }
-
-    /**
      * Initialization of all players before the new round.
      */
     public void startNewRound() {

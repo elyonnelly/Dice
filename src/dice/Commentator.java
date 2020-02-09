@@ -20,7 +20,8 @@ public class Commentator {
      * Makes comments about the progress of the game until game is over
      */
     public void doComment() {
-        while(!game.isGameOver()) {
+        boolean gameIsOver = false;
+        while(!gameIsOver) {
             synchronized (game.getDice()) {
                 //It mean, one player made a move that has not yet been commented
                 if (game.doMoveHappen()) {
@@ -43,8 +44,9 @@ public class Commentator {
                         game.startNewRound();
                     }
 
-                    if (game.isGameOver()) {
+                    if (game.getBestPlayerInRound().getNumberOfVictories() == game.getNumberOfRequiredVictories()) {
                         game.stopGame();
+                        gameIsOver = true;
 
                         Arrays.sort(game.getPlayers(), (o1, o2) -> o1.getNumberOfVictories() > o2.getNumberOfVictories() ? 1 : 0);
                         System.out.println("Congratulation " + game.getPlayers()[0].getName() + "!\n\nFull statistic:");
