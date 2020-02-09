@@ -9,15 +9,11 @@
     <list default="true" id="1cd44c42-1de2-479c-8682-5c568ef96fbf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HW_3/dice/Commentator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW_3/dice/Commentator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW_3/dice/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW_3/dice/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HW_3/dice/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW_3/dice/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HW_3/dice/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW_3/dice/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HW_3/dice/tests/GameTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HW_3/dice/tests/GameTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dice/Commentator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dice/Commentator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dice/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dice/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dice/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dice/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dice/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dice/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dice/tests/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dice/tests/GameTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -184,7 +180,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1581174028340</updated>
-      <workItem from="1581174033677" duration="13649000" />
+      <workItem from="1581174033677" duration="17549000" />
     </task>
     <servers />
   </component>

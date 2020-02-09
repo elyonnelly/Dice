@@ -1,6 +1,7 @@
 package dice;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Commentator {
 
@@ -19,14 +20,14 @@ public class Commentator {
     /**
      * Makes comments about the progress of the game until game is over
      */
-    public void doComment() {
+    private void doComment() {
         while(!game.isEnd()) {
-            synchronized (game.getDice()) {
-                System.out.printf("comment");
+            synchronized (Game.move) {
+                //System.out.printf("comment");
                 //It means, we do comment only after some player's move
                 while (!game.doMoveHappen()) {
                     try {
-                        game.getDice().wait();
+                        Game.move.wait();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -54,14 +55,14 @@ public class Commentator {
                     game.stopGame();
                     game.setEnd(true);
 
-                    Arrays.sort(game.getPlayers(), (o1, o2) -> o1.getNumberOfVictories() > o2.getNumberOfVictories() ? 1 : 0);
+                    Arrays.sort(game.getPlayers(), Comparator.comparingInt(Player::getNumberOfVictories).reversed());
+
                     System.out.println("Congratulation " + game.getPlayers()[0].getName() + "!\n\nFull statistic:");
 
                     game.showStatistic();
                 }
                 game.setDoMoveHappen(false);
-                game.getDice().notifyAll();
-
+                Game.move.notify();
             }
         }
     }

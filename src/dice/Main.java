@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int numberOfPlayers = 5, numberOfDice = 4, numberOfRequiredVictories = 100;
+        int numberOfPlayers = 10, numberOfDice = 4, numberOfRequiredVictories = 100;
         /*if (args.length < 3) {
             System.out.printf("Too few argument for start!");
             System.exit(1);

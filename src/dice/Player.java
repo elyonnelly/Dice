@@ -39,26 +39,41 @@ public class Player {
     private void DoMove() {
         while(!game.isEnd()) {
             synchronized (game.getDice()) {
-                System.out.println(name);
+                //System.out.println(name);
                 //It mean, player can throw dice if he already don't throw dice and previous player ended him move
-                //хочется не выходить из синхронайзд блока,пока мы не получим от комментатора ответ
-                while(didThrowInCurrentRound || game.doMoveHappen()) {
-                    System.out.println(name + " " + didThrowInCurrentRound + " " + game.doMoveHappen());
+                while(!Thread.currentThread().isInterrupted() && didThrowInCurrentRound || game.doMoveHappen()) {
+                    //System.out.println(name + " " + didThrowInCurrentRound + " " + game.doMoveHappen());
                     try {
                         game.getDice().wait();
                     } catch (InterruptedException e) {
-                        //unfortunately, thread of player can be interrupted, and it is normal :)
-                        e.printStackTrace();
+                        //это нормально, если в процессе ожидания своего хода игра завершается и поток прерывается
+                        //e.printStackTrace();
                         return;
                     }
                 }
                 this.points = game.getDice().throwDice();
-                System.out.println(name + " " + points);
+                //System.out.println(name + " " + points);
                 didThrowInCurrentRound = true;
                 game.setLastPlayerInRound(this);
                 game.incrementNumberOfMove();
                 game.setDoMoveHappen(true);
+
+                //Этот блок необходим, чтобы в это время другие потоки не могли перехватить кубики,
+                // до тех пор, пока комментатор не сделал комментарий
+                synchronized (Game.move) {
+                    Game.move.notify();
+                    if (game.doMoveHappen()) {
+                        try {
+                            Game.move.wait(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                }
+
                 game.getDice().notifyAll();
+                //блен адай лок другому потоку пожожта!!!!
             }
         }
     }
