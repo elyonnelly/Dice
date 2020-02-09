@@ -37,16 +37,28 @@ public class Player {
      * Main logic of program: player throws dice there
      */
     private void DoMove() {
-        while(!Thread.currentThread().isInterrupted()) {
+        while(!game.isEnd()) {
             synchronized (game.getDice()) {
+                System.out.println(name);
                 //It mean, player can throw dice if he already don't throw dice and previous player ended him move
-                if (!didThrowInCurrentRound && !game.doMoveHappen()) {
-                    this.points = game.getDice().throwDice();
-                    didThrowInCurrentRound = true;
-                    game.setLastPlayerInRound(this);
-                    game.incrementNumberOfMove();
-                    game.setDoMoveHappen(true);
+                //хочется не выходить из синхронайзд блока,пока мы не получим от комментатора ответ
+                while(didThrowInCurrentRound || game.doMoveHappen()) {
+                    System.out.println(name + " " + didThrowInCurrentRound + " " + game.doMoveHappen());
+                    try {
+                        game.getDice().wait();
+                    } catch (InterruptedException e) {
+                        //unfortunately, thread of player can be interrupted, and it is normal :)
+                        e.printStackTrace();
+                        return;
+                    }
                 }
+                this.points = game.getDice().throwDice();
+                System.out.println(name + " " + points);
+                didThrowInCurrentRound = true;
+                game.setLastPlayerInRound(this);
+                game.incrementNumberOfMove();
+                game.setDoMoveHappen(true);
+                game.getDice().notifyAll();
             }
         }
     }

@@ -40,15 +40,6 @@ class GameTest {
     }
 
     @Test
-    void isGameOver() {
-        for (int i = 0; i < game.getNumberOfRequiredVictories(); i++) {
-            game.getPlayers()[0].addWin();
-        }
-
-        Assert.assertTrue(game.isGameOver());
-    }
-
-    @Test
     void startNewRound() {
         getRandomState();
         game.startNewRound();

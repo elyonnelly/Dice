@@ -4,8 +4,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int numberOfPlayers = 5, numberOfDice = 4, numberOfRequiredVictories = 50;
-        if (args.length < 3) {
+        int numberOfPlayers = 5, numberOfDice = 4, numberOfRequiredVictories = 100;
+        /*if (args.length < 3) {
             System.out.printf("Too few argument for start!");
             System.exit(1);
         }
@@ -26,7 +26,7 @@ public class Main {
                     "number of dices must be between 2 and 5, " +
                     "number of required victories must be between 1 and 100");
             System.exit(1);
-        }
+        }*/
 
         var game = new Game(numberOfPlayers, numberOfDice, numberOfRequiredVictories);
 

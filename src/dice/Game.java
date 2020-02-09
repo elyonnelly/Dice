@@ -10,9 +10,12 @@ public class Game {
     private Player lastPlayerInRound;
     private int numberOfMoveInRound ;
     private boolean doMoveHappen;
+    private boolean isEnd;
 
     private Player[] players;
     private Commentator commentator;
+
+    public static final Object move = new Object();
 
     public Game(int numberOfPlayers, int numberOfDice, int numberOfRequiredVictories) {
         this.numberOfPlayers = numberOfPlayers;
@@ -123,5 +126,13 @@ public class Game {
 
     public void setDoMoveHappen(boolean doMoveHappen) {
         this.doMoveHappen = doMoveHappen;
+    }
+
+    public boolean isEnd() {
+        return isEnd;
+    }
+
+    public void setEnd(boolean end) {
+        isEnd = end;
     }
 }
